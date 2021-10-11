@@ -14,4 +14,10 @@ io.on('connection', client => {
         io.emit('mensaje', {admin: 'Nuevo mensaje'});
 
     });
+
+    client.on('emitir-mensaje', (payload) => {
+        //console.log(payload);
+        //io.emit('nuevo-mensaje', payload);  //Emite a todos
+        client.broadcast.emit('emitir-mensaje', payload); //Emite a todos menos al que lo emitio
+    });
 });
